@@ -11,7 +11,7 @@ class OrderItem < ApplicationRecord
   end
 
   def savings
-    ((quantity * price) - subtotal).round(2)
+    ((quantity * item.price) - subtotal).round(2)
   end
 
   def blended_price
