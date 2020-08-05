@@ -31,7 +31,7 @@ class Item < ApplicationRecord
     reviews.average(:rating)
   end
 
-  def discount
+  def active_discounts
     discounts.where(status: 'active')
   end
 end

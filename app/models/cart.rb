@@ -54,7 +54,7 @@ class Cart
 
   def applicable_discount(item_id)
     count = count_of(item_id)
-    Item.find(item_id).discount.where("#{count} >= quantity").order('percent DESC').limit(1).first
+    Item.find(item_id).active_discounts.where("#{count} >= quantity").order('percent DESC').limit(1).first
   end
 
   def discounted_subtotal_of(item_id)

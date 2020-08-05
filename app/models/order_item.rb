@@ -31,7 +31,7 @@ class OrderItem < ApplicationRecord
 
   def applicable_discount
     count = quantity
-    item.discount.where("#{count} >= quantity").order('percent DESC').limit(1).first
+    item.active_discounts.where("#{count} >= quantity").order('percent DESC').limit(1).first
   end
 
   def discounted_subtotal
