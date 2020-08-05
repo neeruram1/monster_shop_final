@@ -15,7 +15,9 @@ class OrderItem < ApplicationRecord
   end
 
   def blended_price
-    (subtotal / quantity).round(2)
+    new_price = (subtotal / quantity).round(2)
+    update(price: new_price)
+    new_price
   end
 
   def fulfill
@@ -29,15 +31,12 @@ class OrderItem < ApplicationRecord
 
   def applicable_discount
     count = quantity
-    item.discount.where("#{quantity} >= quantity").order('percent DESC').limit(1).first
+    item.discount.where("#{count} >= quantity").order('percent DESC').limit(1).first
   end
 
   def discounted_subtotal
-    items_at_full_price = quantity - applicable_discount.quantity
-    percent = applicable_discount.percent.to_f / 100
-    discounted_price = item.price - (item.price * percent)
-    cost_full_price_items = item.price * items_at_full_price
-    cost_discounted_items = discounted_price * applicable_discount.quantity
-    (cost_full_price_items + cost_discounted_items).round(2)
+    percent = 1 - (applicable_discount.percent.to_f / 100)
+    discounted_price = item.price * percent
+    quantity * discounted_price.round(2)
   end
 end
