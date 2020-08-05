@@ -9,13 +9,12 @@
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw">
 
       <% if cart.applicable_discount(item.id).nil? == false %>
-        <% if cart.applicable_discount(item.id).quantity <= cart.count_of(item.id) %>
         <p>Discount Applied: <%= cart.applicable_discount(item.id).quantity %> items at <%= number_to_percentage(cart.applicable_discount(item.id).percent, strip_insignificant_zeros: true) %> off</p>
         <p>You saved <%= number_to_currency(cart.savings(item.id)) %>!</p>
-        <% end %>
+        <p>Discounted Item Price: <%= number_to_currency(cart.blended_price(item.id)) %></p>
       <% end %>
 
-      <p>Price: <%= number_to_currency(cart.blended_price(item.id)) %></p>
+      <p>Regular Item Price: <%= number_to_currency(item.price) %></p>
       <p>Quantity: <%= cart.count_of(item.id) %></p>
       <p>Subtotal: <%= number_to_currency(cart.subtotal_of(item.id)) %></p>
       <p>Sold by: <%= link_to item.merchant.name, "/merchants/#{item.merchant_id}" %>, Inventory: <%= item.inventory %></p>
