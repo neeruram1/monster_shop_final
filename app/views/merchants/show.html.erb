@@ -31,5 +31,5 @@
   <% end %>
 </section>
 
-<%= button_to 'Edit', "/merchants/#{@merchant.id}/edit", method: :get %>
-<%= button_to 'Delete', "/merchants/#{@merchant.id}", method: :delete  if @merchant.order_items.empty? %>
+<%= button_to 'Edit', edit_merchant_path(@merchant), method: :get %>
+<%= button_to 'Delete', merchant_path(@merchant), method: :delete  if @merchant.order_items.empty? %>

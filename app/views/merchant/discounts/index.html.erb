@@ -1,17 +1,17 @@
 <h2>Bulk Discounts</h2>
-<%= link_to "Create A Discount", '/merchant/discounts/new' %>
+<%= link_to "Create A Discount", new_merchant_discount_path %>
 <% @discounts.each do |discount| %>
 <section class="discount-<%= discount.id %>">
-  <h3>Discount ID: <%= link_to "#{discount.id}", "/merchant/discounts/#{discount.id}" %></h3>
+  <h3>Discount ID: <%= link_to "#{discount.id}", merchant_discount_path(discount) %></h3>
   <p>Status: <%= discount.status.upcase %></p>
   <p>Percent Off: <%= number_to_percentage(discount.percent, strip_insignificant_zeros: true) %></p>
   <p>Required Item Quantity: <%= discount.quantity %> units</p>
-  <%= link_to "Edit Discount", "/merchant/discounts/#{discount.id}/edit" %><br>
+  <%= link_to "Edit Discount", edit_merchant_discount_path(discount) %><br>
     <% if discount.status == 'active' %>
-      <%= link_to "Deactivate", "/merchant/discounts/#{discount.id}/change_status", method: :put %>
+      <%= link_to "Deactivate", merchant_discount_status_path(discount), method: :put %>
     <% elsif discount.status == 'inactive' %>
-      <%= link_to "Activate", "/merchant/discounts/#{discount.id}/change_status", method: :put %>
-      <%= link_to "Delete", "/merchant/discounts/#{discount.id}", method: :delete %>
+      <%= link_to "Activate", merchant_discount_status_path(discount), method: :put %>
+      <%= link_to "Delete", merchant_discount_path(discount), method: :delete %>
     <% end %>
 </section>
 <br>

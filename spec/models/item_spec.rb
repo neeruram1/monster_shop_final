@@ -27,7 +27,6 @@ RSpec.describe Item do
       @review_4 = @ogre.reviews.create(title: 'So So', description: 'This Ogre is So so', rating: 2)
       @review_5 = @ogre.reviews.create(title: 'Okay', description: 'This Ogre is Okay', rating: 4)
       @discount_1 = @megan.discounts.create(percent: 3, quantity: 3)
-      @discount_2 = @megan.discounts.create(percent: 15, quantity: 2)
       @discount_3 = @megan.discounts.create(percent: 5, quantity: 6, status: 'inactive')
     end
 
@@ -42,7 +41,7 @@ RSpec.describe Item do
     end
 
     it '.active_discounts' do
-      expect(@ogre.active_discounts).to eq([@discount_1, @discount_2])
+      expect(@ogre.active_discounts).to eq([@discount_1])
     end
   end
 

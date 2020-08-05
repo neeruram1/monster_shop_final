@@ -99,5 +99,21 @@ RSpec.describe 'Merchant Discount Index Page' do
       expect(current_path).to eq('/merchant/discounts')
       expect(page).to have_content("Discount successfully created")
     end
+
+    it "I cannot create a discount that has a percentage and quantity of 0 or less" do
+      percent = 0
+      quantity = 0
+
+      visit '/merchant/discounts'
+
+      click_on "Create A Discount"
+
+      fill_in "Percent Off", with: percent
+      fill_in "Item Quantity", with: quantity
+      click_on "Create Discount"
+
+      expect(current_path).to eq('/merchant/discounts/new')
+      expect(page).to have_content("Percent must be greater than 0 and Quantity must be greater than 0")
+    end
   end
 end
