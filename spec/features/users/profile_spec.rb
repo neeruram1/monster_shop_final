@@ -9,7 +9,7 @@ RSpec.describe "User Profile Path" do
 
     it "I can view my profile page" do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
-      visit profile_path
+      visit "/profile"
 
       expect(page).to have_content(@user.name)
       expect(page).to have_content(@user.email)
@@ -20,7 +20,7 @@ RSpec.describe "User Profile Path" do
     end
 
     it "I can update my profile data" do
-      visit login_path
+      visit "/login"
 
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
@@ -45,7 +45,7 @@ RSpec.describe "User Profile Path" do
       fill_in "Zip", with: zip
       click_button 'Update Profile'
 
-      expect(current_path).to eq(profile_path)
+      expect(current_path).to eq("/profile")
 
       expect(page).to have_content('Profile has been updated!')
       expect(page).to have_content(name)
@@ -55,7 +55,7 @@ RSpec.describe "User Profile Path" do
     end
 
     it "I can update my password" do
-      visit login_path
+      visit "/login"
 
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
@@ -71,13 +71,13 @@ RSpec.describe "User Profile Path" do
       fill_in "Password confirmation", with: password
       click_button 'Change Password'
 
-      expect(current_path).to eq(profile_path)
+      expect(current_path).to eq("/profile")
 
       expect(page).to have_content('Profile has been updated!')
 
       click_link 'Log Out'
 
-      visit login_path
+      visit "/login"
 
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password
@@ -85,13 +85,13 @@ RSpec.describe "User Profile Path" do
 
       expect(page).to have_content("Your email or password was incorrect!")
 
-      visit login_path
+      visit "/login"
 
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: "newpassword"
       click_button 'Log In'
 
-      expect(current_path).to eq(profile_path)
+      expect(current_path).to eq("/profile")
     end
 
     it "I must use a unique email address" do

@@ -8,7 +8,7 @@
     <%= link_to order_item.item.name, "/merchant/items/#{order_item.item.id}" %>
 
     <% if order_item.applicable_discount.nil? == false %>
-      <p>Discount Applied: <%= link_to "#{order_item.applicable_discount.id}", merchant_discount_path(order_item.applicable_discount.id) %> </p>
+      <p>Discount Applied: <%= link_to "#{order_item.applicable_discount.id}", "/merchant/discounts/#{order_item.applicable_discount.id}" %> </p>
       <p>Discounted Item Price: <%= number_to_currency(order_item.blended_price) %> </p>
     <% end %>
     <% if order_item.applicable_discount.nil?  %>

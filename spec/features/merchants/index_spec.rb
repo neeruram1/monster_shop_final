@@ -47,7 +47,7 @@ RSpec.describe 'Merchant Index Page' do
         click_button('Disable')
       end
 
-      expect(current_path).to eq(merchants_path)
+      expect(current_path).to eq("/merchants")
       expect(page).to have_content("#{@megan.name} has been disabled")
       visit '/merchants'
       within "#merchant-#{@megan.id}" do
@@ -58,7 +58,7 @@ RSpec.describe 'Merchant Index Page' do
     it 'When I disable a merchant, their items become inactive' do
       page.driver.submit :patch, "/admin/merchants/#{@megan.id}", {}
 
-      visit items_path
+      visit "/items"
 
       expect(page).to_not have_css("#item-#{@giant.id}")
     end
@@ -70,7 +70,7 @@ RSpec.describe 'Merchant Index Page' do
         click_button('Enable')
       end
 
-      expect(current_path).to eq(merchants_path)
+      expect(current_path).to eq("/merchants")
       expect(page).to have_content("#{@brian.name} has been enabled")
       visit '/merchants'
       within "#merchant-#{@brian.id}" do
@@ -81,7 +81,7 @@ RSpec.describe 'Merchant Index Page' do
     it 'When I enable a merchant, their items become active' do
       page.driver.submit :patch, "/admin/merchants/#{@brian.id}", {}
 
-      visit items_path
+      visit "/items"
 
       expect(page).to have_css("#item-#{@hippo.id}")
     end

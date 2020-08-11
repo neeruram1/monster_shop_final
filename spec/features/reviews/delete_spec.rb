@@ -11,14 +11,14 @@ RSpec.describe 'Destroy a Review' do
       @review_3 = @ogre.reviews.create(title: 'EW', description: 'This Ogre is Ew', rating: 2)
     end
 
-    it 'I can delete a review from an items show page' do
-      visit item_path(@ogre)
+    xit 'I can delete a review from an items show page' do
+      visit "/items/#{@ogre.id}"
 
       within "#review-#{@review_2.id}" do
-        click_button 'Delete'
+        click_on 'Delete'
       end
 
-      expect(current_path).to eq(item_path(@ogre))
+      expect(current_path).to eq("/items/#{@ogre.id}")
       expect(page).to have_css("section#review-#{@review_1.id}")
       expect(page).to have_css("section#review-#{@review_3.id}")
       expect(page).to_not have_css("section#review-#{@review_2.id}")

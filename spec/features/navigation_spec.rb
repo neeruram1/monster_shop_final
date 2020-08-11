@@ -4,63 +4,63 @@ RSpec.describe 'Site Navigation' do
   describe 'As a Visitor' do
     describe 'I see a nav bar where I can link to' do
       it 'the welcome page' do
-        visit items_path
+        visit "/items"
 
         within 'nav' do
           click_link 'Home'
         end
 
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq("/")
       end
 
       it 'all items' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Items'
         end
 
-        expect(current_path).to eq(items_path)
+        expect(current_path).to eq("/items")
       end
 
       it 'all merchants' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Merchants'
         end
 
-        expect(current_path).to eq(merchants_path)
+        expect(current_path).to eq("/merchants")
       end
 
       it 'my cart' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Cart: 0'
         end
 
-        expect(current_path).to eq(cart_path)
+        expect(current_path).to eq("/cart")
       end
 
       it 'the login page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Log In'
         end
 
-        expect(current_path).to eq(login_path)
+        expect(current_path).to eq("/login")
       end
 
       it 'the registraton page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Register'
         end
 
-        expect(current_path).to eq(registration_path)
+        expect(current_path).to eq("/registration")
       end
     end
   end
@@ -72,7 +72,7 @@ RSpec.describe 'Site Navigation' do
     end
 
     it 'I see who I am logged in as' do
-      visit root_path
+      visit "/"
 
       within 'nav' do
         expect(page).to have_content("Logged in as #{@user.name}")
@@ -81,75 +81,75 @@ RSpec.describe 'Site Navigation' do
 
     describe 'I see a nav bar where I can link to' do
       it 'the welcome page' do
-        visit items_path
+        visit "/items"
 
         within 'nav' do
           click_link 'Home'
         end
 
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq("/")
       end
 
       it 'all items' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Items'
         end
 
-        expect(current_path).to eq(items_path)
+        expect(current_path).to eq("/items")
       end
 
       it 'all merchants' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Merchants'
         end
 
-        expect(current_path).to eq(merchants_path)
+        expect(current_path).to eq("/merchants")
       end
 
       it 'my cart' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Cart: 0'
         end
 
-        expect(current_path).to eq(cart_path)
+        expect(current_path).to eq("/cart")
       end
 
       it 'the logout page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Log Out'
         end
 
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq("/")
       end
 
       it 'my profile page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Profile'
         end
 
-        expect(current_path).to eq(profile_path)
+        expect(current_path).to eq("/profile")
       end
     end
 
     describe 'I do not see in my nav bar' do
       it 'the login link' do
-        visit root_path
+        visit "/"
 
         expect(page).to_not have_link('Log In')
       end
 
       it 'the registration link' do
-        visit root_path
+        visit "/"
 
         expect(page).to_not have_link('Register')
       end
@@ -164,7 +164,7 @@ RSpec.describe 'Site Navigation' do
     end
 
     it 'I see who I am logged in as' do
-      visit root_path
+      visit "/"
 
       within 'nav' do
         expect(page).to have_content("Logged in as #{@m_user.name}")
@@ -173,85 +173,85 @@ RSpec.describe 'Site Navigation' do
 
     describe 'I see a nav bar where I can link to' do
       it 'the welcome page' do
-        visit items_path
+        visit "/items"
 
         within 'nav' do
           click_link 'Home'
         end
 
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq("/")
       end
 
       it 'all items' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Items'
         end
 
-        expect(current_path).to eq(items_path)
+        expect(current_path).to eq("/items")
       end
 
       it 'all merchants' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Merchants'
         end
 
-        expect(current_path).to eq(merchants_path)
+        expect(current_path).to eq("/merchants")
       end
 
       it 'my cart' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Cart: 0'
         end
 
-        expect(current_path).to eq(cart_path)
+        expect(current_path).to eq("/cart")
       end
 
       it 'the logout page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Log Out'
         end
 
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq("/")
       end
 
       it 'my profile page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Profile'
         end
 
-        expect(current_path).to eq(profile_path)
+        expect(current_path).to eq("/profile")
       end
 
       it 'my merchant page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Merchant Dashboard'
         end
 
-        expect(current_path).to eq(merchant_dashboard_path)
+        expect(current_path).to eq("/merchant")
       end
     end
 
     describe 'I do not see in my nav bar' do
       it 'the login link' do
-        visit root_path
+        visit "/"
 
         expect(page).to_not have_link('Log In')
       end
 
       it 'the registration link' do
-        visit root_path
+        visit "/"
 
         expect(page).to_not have_link('Register')
       end
@@ -265,7 +265,7 @@ RSpec.describe 'Site Navigation' do
     end
 
     it 'I see who I am logged in as' do
-      visit root_path
+      visit "/"
 
       within 'nav' do
         expect(page).to have_content("Logged in as #{@admin.name}")
@@ -274,81 +274,81 @@ RSpec.describe 'Site Navigation' do
 
     describe 'I see a nav bar where I can link to' do
       it 'the welcome page' do
-        visit items_path
+        visit "/items"
 
         within 'nav' do
           click_link 'Home'
         end
 
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq("/")
       end
 
       it 'all items' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Items'
         end
 
-        expect(current_path).to eq(items_path)
+        expect(current_path).to eq("/items")
       end
 
       it 'all merchants' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Merchants'
         end
 
-        expect(current_path).to eq(merchants_path)
+        expect(current_path).to eq("/merchants")
       end
 
       it 'the logout page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Log Out'
         end
 
-        expect(current_path).to eq(root_path)
+        expect(current_path).to eq("/")
       end
 
       it 'my profile page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Profile'
         end
 
-        expect(current_path).to eq(profile_path)
+        expect(current_path).to eq("/profile")
       end
 
       it 'my merchant page' do
-        visit root_path
+        visit "/"
 
         within 'nav' do
           click_link 'Admin Dashboard'
         end
 
-        expect(current_path).to eq(admin_dashboard_path)
+        expect(current_path).to eq("/admin")
       end
     end
 
     describe 'I do not see in my nav bar' do
       it 'the login link' do
-        visit root_path
+        visit "/"
 
         expect(page).to_not have_link('Log In')
       end
 
       it 'the registration link' do
-        visit root_path
+        visit "/"
 
         expect(page).to_not have_link('Register')
       end
 
       it 'a cart link' do
-        visit root_path
+        visit "/"
 
         expect(page).to_not have_link('Cart')
       end

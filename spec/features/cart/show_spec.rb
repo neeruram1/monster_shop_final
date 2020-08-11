@@ -13,11 +13,11 @@ RSpec.describe 'Cart Show Page' do
 
     describe 'I can see my cart' do
       it "I can visit a cart show page to see items in my cart" do
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -55,11 +55,11 @@ RSpec.describe 'Cart Show Page' do
 
     describe 'I can manipulate my cart' do
       it 'I can empty my cart' do
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -73,11 +73,11 @@ RSpec.describe 'Cart Show Page' do
       end
 
       it 'I can remove one item from my cart' do
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -93,11 +93,11 @@ RSpec.describe 'Cart Show Page' do
       end
 
       it 'I can add quantity to an item in my cart' do
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -113,11 +113,11 @@ RSpec.describe 'Cart Show Page' do
       end
 
       it 'I can not add more quantity than the items inventory' do
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -134,11 +134,11 @@ RSpec.describe 'Cart Show Page' do
       end
 
       it 'I can reduce the quantity of an item in my cart' do
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -154,7 +154,7 @@ RSpec.describe 'Cart Show Page' do
       end
 
       it 'if I reduce the quantity to zero, the item is removed from my cart' do
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -170,9 +170,9 @@ RSpec.describe 'Cart Show Page' do
 
       it "I add the minimum quantity of an item for a bulk discount and I see the discount reflected in my subtotal" do
         discount_1 = @megan.discounts.create(percent: 5, quantity: 3)
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -184,13 +184,13 @@ RSpec.describe 'Cart Show Page' do
           expect(page).to have_content("Subtotal: $40.00")
         end
 
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -206,15 +206,15 @@ RSpec.describe 'Cart Show Page' do
 
       it "If I remove items and do not have enough quantity for a discount I no longer see the bulk discount" do
         discount_1 = @megan.discounts.create(percent: 5, quantity: 3)
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -240,15 +240,15 @@ RSpec.describe 'Cart Show Page' do
         discount_1 = @megan.discounts.create(percent: 5, quantity: 3)
         discount_2 = @brian.discounts.create(percent: 4, quantity: 2)
 
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
-        visit item_path(@hippo)
+        visit "/items/#{@hippo.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -270,19 +270,19 @@ RSpec.describe 'Cart Show Page' do
         discount_1 = @megan.discounts.create(percent: 5, quantity: 3)
         vampire = @megan.items.create!(name: 'Vampire', description: "I'm a Vampire!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 3 )
 
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@giant)
+        visit "/items/#{@giant.id}"
         click_button 'Add to Cart'
-        visit item_path(@giant)
+        visit "/items/#{@giant.id}"
         click_button 'Add to Cart'
-        visit item_path(@giant)
+        visit "/items/#{@giant.id}"
         click_button 'Add to Cart'
-        visit item_path(vampire)
+        visit "/items/#{vampire.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -312,19 +312,19 @@ RSpec.describe 'Cart Show Page' do
         discount_3 = @megan.discounts.create(percent: 15, quantity: 5, status: 'inactive')
         vampire = @megan.items.create!(name: 'Vampire', description: "I'm a Vampire!", price: 50, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaLM_vbg2Rh-mZ-B4t-RSU9AmSfEEq_SN9xPP_qrA2I6Ftq_D9Qw', active: true, inventory: 20)
 
-        visit item_path(vampire)
+        visit "/items/#{vampire.id}"
         click_button 'Add to Cart'
-        visit item_path(vampire)
+        visit "/items/#{vampire.id}"
         click_button 'Add to Cart'
-        visit item_path(vampire)
+        visit "/items/#{vampire.id}"
         click_button 'Add to Cart'
-        visit item_path(vampire)
+        visit "/items/#{vampire.id}"
         click_button 'Add to Cart'
-        visit item_path(vampire)
+        visit "/items/#{vampire.id}"
         click_button 'Add to Cart'
-        visit item_path(vampire)
+        visit "/items/#{vampire.id}"
         click_button 'Add to Cart'
-        visit item_path(vampire)
+        visit "/items/#{vampire.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -340,11 +340,11 @@ RSpec.describe 'Cart Show Page' do
 
       it "I see my total savings in the cart" do
         discount_1 = @megan.discounts.create(percent: 5, quantity: 3)
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
 
         visit '/cart'
@@ -360,11 +360,11 @@ RSpec.describe 'Cart Show Page' do
 
       it "I see the discounted prices for each item" do
         discount_1 = @megan.discounts.create(percent: 5, quantity: 3)
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
-        visit item_path(@ogre)
+        visit "/items/#{@ogre.id}"
         click_button 'Add to Cart'
 
         visit '/cart'

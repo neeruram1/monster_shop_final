@@ -27,7 +27,7 @@
     <% if current_user %>
       <%= button_to 'Check Out', '/orders' %>
     <% else %>
-      <p>You must <%= link_to 'register', registration_path %> or <%= link_to 'log in', login_path %> to checkout.</p>
+      <p>You must <%= link_to 'register', '/registration' %> or <%= link_to 'log in', '/login' %> to checkout.</p>
     <% end %>
   </section>
   <%= button_to 'Empty Cart', '/cart', method: :delete %>

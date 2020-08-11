@@ -3,12 +3,12 @@
 <p><%= @merchant.city %> <%= @merchant.state %> <%= @merchant.zip %></p>
 
 <%= link_to 'My Items', '/merchant/items' %>
-<%= link_to 'My Discounts', merchant_discounts_path %>
+<%= link_to 'My Discounts', '/merchant/discounts' %>
 
 <section class="orders">
   <% @merchant.pending_orders.each do |order| %>
     <section id="order-<%= order.id %>">
-      <%= link_to order.id, merchant_order_path(order) %>
+      <%= link_to order.id, "/merchant/orders/#{order.id}" %>
       <p>Potential Revenue: <%= order.merchant_subtotal(@merchant.id) %></p>
       <p>Quantity of Items: <%= order.merchant_quantity(@merchant.id) %></p>
       <p>Created: <%= order.created_at %></p>

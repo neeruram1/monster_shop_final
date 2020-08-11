@@ -19,7 +19,7 @@ RSpec.describe 'User Order Show Page' do
     end
 
     it 'I can link to my orders from my profile' do
-      visit profile_path
+      visit '/profile'
 
       click_link 'My Orders'
 

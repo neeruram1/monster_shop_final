@@ -1,6 +1,6 @@
 class CartController < ApplicationController
   before_action :exclude_admin
-  
+
   def add_item
     item = Item.find(params[:item_id])
     session[:cart] ||= {}
@@ -11,7 +11,7 @@ class CartController < ApplicationController
       session[:cart] = cart.contents
       flash[:notice] = "#{item.name} has been added to your cart!"
     end
-    redirect_to items_path
+    redirect_to '/items'
   end
 
   def show

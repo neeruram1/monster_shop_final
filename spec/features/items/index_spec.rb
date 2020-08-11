@@ -62,7 +62,7 @@ RSpec.describe 'Item Index Page' do
     end
 
     it 'I see the most and least popular items' do
-      visit items_path
+      visit "/items"
 
       within '.statistics' do
         expect(page).to have_content("Most Popular Items:\n#{@hippo.name}: 8 sold #{@ogre.name}: 2 sold #{@giant.name}: 0 sold")

@@ -12,6 +12,6 @@ class Admin::MerchantsController < Admin::BaseController
       merchant.items.update_all(active:false)
       flash[:notice] = "#{merchant.name} has been disabled"
     end
-    redirect_to merchants_path
+    redirect_to '/merchants'
   end
 end
