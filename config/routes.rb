@@ -7,13 +7,13 @@ Rails.application.routes.draw do
   #   resources :items, only: [:index]
   # end
   get '/merchants', to: 'merchants#index'
-  get '/merchants/:id', to: 'merchants#show'
   get '/merchants/:id/edit', to: 'merchants#edit'
   patch '/merchants/:id', to: 'merchants#update'
   post '/merchants', to: 'merchants#create'
   get '/merchants/new', to: 'merchants#new'
   delete '/merchants/:id', to: 'merchants#destroy'
-  get '/merchants/:id/items', to: 'items#index'
+  get '/merchants/:merchant_id/items', to: 'items#index'
+  get '/merchants/:id', to: 'merchants#show'
 
   get '/items', to: 'items#index'
   get '/items/:id', to: 'items#show'

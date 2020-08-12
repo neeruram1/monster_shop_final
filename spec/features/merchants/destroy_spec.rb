@@ -22,7 +22,9 @@ RSpec.describe 'Destroy Existing Merchant' do
     end
 
     it 'When a merchant is destroyed, their items are also destroyed' do
-      page.driver.submit :delete, "/merchants/#{@brian.id}"
+      visit "/merchants/#{@brian.id}"
+
+      click_button 'Delete'
 
       visit '/items'
 

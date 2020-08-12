@@ -38,10 +38,6 @@ RSpec.describe 'Navigation Restrictions' do
       visit '/merchant/items/3/edit'
     end
 
-    it 'I can not put to /merchant/items' do
-      page.driver.submit :put, '/merchant/items/3', {}
-    end
-
     it 'I can not visit the admin dashboard' do
       visit '/admin'
     end
@@ -102,10 +98,6 @@ RSpec.describe 'Navigation Restrictions' do
       visit '/merchant/items/3/edit'
     end
 
-    it 'I can not put to /merchant/items' do
-      page.driver.submit :put, '/merchant/items/3', {}
-    end
-
     it 'I can not visit the admin dashboard' do
       visit '/admin'
     end
@@ -142,7 +134,6 @@ RSpec.describe 'Navigation Restrictions' do
     it 'I can not visit the admin merchant show page' do
       visit '/admin/merchants/3'
     end
-
 
     it 'I can not visit the admin users page' do
       visit '/admin/users'
@@ -197,10 +188,6 @@ RSpec.describe 'Navigation Restrictions' do
 
     it 'I can not visit edit merchant item' do
       visit '/merchant/items/3/edit'
-    end
-
-    it 'I can not put to /merchant/items' do
-      page.driver.submit :put, '/merchant/items/3', {}
     end
 
     it 'I cannot visit a cart' do
